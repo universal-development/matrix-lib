@@ -2,11 +2,11 @@ package com.unidev.lib.matrix;
 
 /**
  * Matrix position object. <br/>
- * Holds inside line, column for item inside of matrix. <br/>
+ * Holds inside row, column for item inside of matrix. <br/>
  */
 public class Coordinate {
 
-    private Integer line;
+    private Integer row;
     private Integer column;
 
     /**
@@ -18,11 +18,11 @@ public class Coordinate {
     }
 
     public Coordinate() {
-        line = column = null;
+        row = column = null;
     }
 
-    public Coordinate withLine(Integer line) {
-        setLine(line);
+    public Coordinate withRow(Integer row) {
+        setRow(row);
         return this;
     }
 
@@ -31,12 +31,12 @@ public class Coordinate {
         return this;
     }
 
-    public Integer getLine() {
-        return line;
+    public Integer getRow() {
+        return row;
     }
 
-    public void setLine(Integer line) {
-        this.line = line;
+    public void setRow(Integer row) {
+        this.row = row;
     }
 
     public Integer getColumn() {
@@ -50,7 +50,7 @@ public class Coordinate {
     @Override
     public String toString() {
         return "Coordinate{" +
-                "line=" + line +
+                "row=" + row +
                 ", column=" + column +
                 '}';
     }
@@ -63,14 +63,14 @@ public class Coordinate {
         Coordinate that = (Coordinate) o;
 
         if (column != null ? !column.equals(that.column) : that.column != null) return false;
-        if (line != null ? !line.equals(that.line) : that.line != null) return false;
+        if (row != null ? !row.equals(that.row) : that.row != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = line != null ? line.hashCode() : 0;
+        int result = row != null ? row.hashCode() : 0;
         result = 31 * result + (column != null ? column.hashCode() : 0);
         return result;
     }
