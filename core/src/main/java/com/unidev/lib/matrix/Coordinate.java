@@ -8,8 +8,22 @@ public class Coordinate {
     private Integer line;
     private Integer column;
 
-    public Coordinate() {
+    public Coordinate newInstance() {
+        return new Coordinate();
+    }
 
+    public Coordinate() {
+        line = column = null;
+    }
+
+    public Coordinate withLine(Integer line) {
+        setLine(line);
+        return this;
+    }
+
+    public Coordinate withColumn(Integer column) {
+        setColumn(column);
+        return this;
     }
 
     public Integer getLine() {
