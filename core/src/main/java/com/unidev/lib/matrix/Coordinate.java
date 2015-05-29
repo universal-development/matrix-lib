@@ -1,13 +1,18 @@
 package com.unidev.lib.matrix;
 
 /**
- * Matrix position object
+ * Matrix position object. <br/>
+ * Holds inside line, column for item inside of matrix. <br/>
  */
 public class Coordinate {
 
     private Integer line;
     private Integer column;
 
+    /**
+     * New coordinate instance
+     * @return new coordinate instance
+     */
     public Coordinate newInstance() {
         return new Coordinate();
     }
