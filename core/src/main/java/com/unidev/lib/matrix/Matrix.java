@@ -68,15 +68,6 @@ public abstract class Matrix<T> {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Matrix{" +
-                "matrix=" + Arrays.toString(matrix) +
-                ", rows=" + rows +
-                ", columns=" + columns +
-                '}';
-    }
-
     /**
      * Get value from coordinate
      * @param coordinate
@@ -94,6 +85,33 @@ public abstract class Matrix<T> {
     public void set(Coordinate coordinate, T value) {
         matrix[coordinate.getRow()][coordinate.getColumn()] = value;
     }
+
+    /**
+     * Find item in matrix
+     * @param item Item to search
+     * @return return item coordinate or null if not found
+     */
+    public Coordinate positionOf(T item) {
+        //TODO: implement search item
+        return null;
+    }
+
+    /**
+     * Clear matrix cells, set everything to null
+     */
+    public void clear() {
+        //TODO: implement clearing
+    }
+
+    @Override
+    public String toString() {
+        return "Matrix{" +
+                "matrix=" + Arrays.toString(matrix) +
+                ", rows=" + rows +
+                ", columns=" + columns +
+                '}';
+    }
+
 
     public Integer getRows() {
         return rows;
