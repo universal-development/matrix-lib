@@ -37,4 +37,29 @@ public abstract class Matrix<T> {
         this.matrix = createMatrix(rows, columns);
     }
 
+    /**
+     * Get value from coordinate
+     * @param coordinate
+     * @return
+     */
+    public T get(Coordinate coordinate) {
+        return matrix[coordinate.getRow()][coordinate.getColumn()];
+    }
+
+    /**
+     * Set value on specific coordinate
+     * @param coordinate
+     * @param value
+     */
+    public void set(Coordinate coordinate, T value) {
+        matrix[coordinate.getRow()][coordinate.getColumn()] = value;
+    }
+
+    public Integer getRows() {
+        return rows;
+    }
+
+    public Integer getColumns() {
+        return columns;
+    }
 }
