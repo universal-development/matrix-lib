@@ -38,6 +38,35 @@ public abstract class Matrix<T> {
     }
 
     /**
+     * Compare matrix
+     * @param object
+     * @return
+     */
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Matrix)) {
+            return false;
+        }
+        Matrix<T> otherMatrix = (Matrix<T>) object;
+        if (getRows() != otherMatrix.getRows()) {
+            return false;
+        }
+        if (getColumns() != otherMatrix.getColumns()) {
+            return false;
+        }
+
+        for(int row = 0;row<=getRows();row++) {
+            for(int column = 0;column<=getColumns();column++) {
+                if (!matrix[row][column].equals(otherMatrix.matrix[row][column])) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Get value from coordinate
      * @param coordinate
      * @return
