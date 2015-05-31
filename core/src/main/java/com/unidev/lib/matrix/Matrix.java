@@ -1,13 +1,15 @@
 package com.unidev.lib.matrix;
 
+import java.util.Arrays;
+
 /**
  * Matrix representation
  */
 public abstract class Matrix<T> {
 
-    private T matrix[][];
-    private Integer rows;
-    private Integer columns;
+    protected T matrix[][];
+    protected Integer rows;
+    protected Integer columns;
 
     /**
      * Create matrix object
@@ -64,6 +66,15 @@ public abstract class Matrix<T> {
         }
 
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Matrix{" +
+                "matrix=" + Arrays.toString(matrix) +
+                ", rows=" + rows +
+                ", columns=" + columns +
+                '}';
     }
 
     /**
