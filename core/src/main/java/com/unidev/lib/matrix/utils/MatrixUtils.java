@@ -1,4 +1,6 @@
-package com.unidev.lib.matrix;
+package com.unidev.lib.matrix.utils;
+
+import com.unidev.lib.matrix.model.Matrix;
 
 /**
  * Utils code to work with matrix instances

@@ -1,11 +1,11 @@
-package com.unidev.lib.matrix;
+package com.unidev.lib.matrix.model;
 
 import java.util.Arrays;
 
 /**
  * Matrix representation
  */
-public abstract class Matrix<T> {
+public abstract class Matrix<T> implements Iterable<T> {
 
     protected T matrix[][];
     protected Integer rows;

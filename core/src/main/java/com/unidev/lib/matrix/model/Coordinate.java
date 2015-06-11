@@ -1,4 +1,4 @@
-package com.unidev.lib.matrix;
+package com.unidev.lib.matrix.model;
 
 /**
  * Matrix position object. <br/>
