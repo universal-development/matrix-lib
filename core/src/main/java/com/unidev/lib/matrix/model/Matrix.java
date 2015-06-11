@@ -82,8 +82,9 @@ public abstract class Matrix<T> implements Iterable<T> {
      * @param coordinate
      * @param value
      */
-    public void set(Coordinate coordinate, T value) {
+    public Matrix set(Coordinate coordinate, T value) {
         matrix[coordinate.getRow()][coordinate.getColumn()] = value;
+        return this;
     }
 
     /**
@@ -99,8 +100,10 @@ public abstract class Matrix<T> implements Iterable<T> {
     /**
      * Clear matrix cells, set everything to null
      */
-    public void clear() {
+    public Matrix clear() {
         //TODO: implement clearing
+
+        return this;
     }
 
     @Override
