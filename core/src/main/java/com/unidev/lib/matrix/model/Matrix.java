@@ -1,6 +1,9 @@
 package com.unidev.lib.matrix.model;
 
+import com.unidev.lib.matrix.utils.MatrixIterator;
+
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Matrix representation
@@ -104,6 +107,11 @@ public abstract class Matrix<T> implements Iterable<T> {
         //TODO: implement clearing
 
         return this;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new MatrixIterator<T>(this);
     }
 
     @Override
