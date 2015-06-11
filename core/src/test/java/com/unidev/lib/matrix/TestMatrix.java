@@ -1,11 +1,11 @@
 package com.unidev.lib.matrix;
 
-import com.unidev.lib.matrix.model.Coordinate;
 import org.junit.Test;
 
+import static com.unidev.lib.matrix.model.Coordinate.coordinate;
+import static com.unidev.lib.matrix.model.Coordinate.newInstance;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.IsNot.not;
 
 public class TestMatrix {
@@ -29,9 +29,9 @@ public class TestMatrix {
     public void testElementGetSet() {
         DemoMatrix demoMatrix = new DemoMatrix(3);
 
-        demoMatrix.set(Coordinate.newInstance().withRow(0).withColumn(1), 666);
+        demoMatrix.set(newInstance().withRow(0).withColumn(1), 666);
 
-        Integer value = demoMatrix.get(Coordinate.newInstance().withRow(0).withColumn(1));
+        Integer value = demoMatrix.get(newInstance().withRow(0).withColumn(1));
         assertThat(value, is(666));
     }
 
@@ -45,10 +45,25 @@ public class TestMatrix {
         assertThat(matrix, not(equalTo(differentSizeMatrix)));
 
         DemoMatrix equalSizeDifferentElement = new DemoMatrix(3);
-        equalSizeDifferentElement.set(Coordinate.newInstance().withRow(1).withColumn(2), 120);
+        equalSizeDifferentElement.set(newInstance().withRow(1).withColumn(2), 120);
 
         assertThat(matrix, not(equalTo(equalSizeDifferentElement)));
 
+    }
+
+    @Test
+    public void testMatrixClear() {
+        DemoMatrix nullMatrix = new DemoMatrix(3);
+        DemoMatrix dataMatrix = new DemoMatrix(3);
+
+        dataMatrix.set(coordinate().withRow(2).withColumn(0), 400);
+        assertThat(dataMatrix.get(coordinate().withRow(2).withColumn(0)), is(400));
+
+        dataMatrix.clear();
+
+        assertThat(dataMatrix.get(coordinate().withRow(2).withColumn(0)), is(nullValue()));
+
+        assertThat(dataMatrix, equalTo(nullMatrix));
     }
 
 
