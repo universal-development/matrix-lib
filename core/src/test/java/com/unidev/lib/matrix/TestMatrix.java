@@ -18,7 +18,7 @@ public class TestMatrix extends Matrix<Integer> {
 
     @Override
     protected Integer[][] createMatrix(Integer rows, Integer columns) {
-        return new Integer[0][];
+        return new Integer[rows][columns];
     }
 
 
