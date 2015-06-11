@@ -89,11 +89,23 @@ public abstract class Matrix<T> implements Iterable<T> {
 
     /**
      * Find item in matrix
-     * @param item Item to search
+     * @param item Item to search, may be null value
      * @return return item coordinate or null if not found
      */
     public Coordinate positionOf(T item) {
-        //TODO: implement search item
+        for(Integer row = 0;row < getRows();row++) {
+            for(Integer column = 0;column < getColumns();column++) {
+                if (item == null) {
+                    if (matrix[row][column] == null) {
+                        return Coordinate.newInstance().withRow(row).withColumn(column);
+                    }
+                } else {
+                    if (item.equals(matrix[row][column])) {
+                        return Coordinate.newInstance().withRow(row).withColumn(column);
+                    }
+                }
+            }
+        }
         return null;
     }
 
@@ -101,8 +113,11 @@ public abstract class Matrix<T> implements Iterable<T> {
      * Clear matrix cells, set everything to null
      */
     public Matrix clear() {
-        //TODO: implement clearing
-
+        for(Integer row = 0;row < getRows();row++) {
+            for(Integer column = 0;column < getColumns();column++) {
+                matrix[row][column] = null;
+            }
+        }
         return this;
     }
 
