@@ -10,11 +10,12 @@ import java.util.Iterator;
  */
 public class MatrixIterator<T> implements Iterator<T> {
 
-
     protected Coordinate position;
+    protected Matrix<T> matrix;
 
     public MatrixIterator(Matrix<T> matrix) {
-        position = new Coordinate(0,0);
+        this.position = new Coordinate(0,0);
+        this.matrix = matrix;
     }
 
 
