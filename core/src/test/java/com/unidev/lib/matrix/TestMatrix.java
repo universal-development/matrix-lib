@@ -1,25 +1,22 @@
 package com.unidev.lib.matrix;
 
-import com.unidev.lib.matrix.model.Matrix;
+import org.junit.Test;
 
-/**
- * Basic class matrix class for testing purposes,
- * it will store Integer values.
- */
-public class TestMatrix extends Matrix<Integer> {
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
-    public TestMatrix(Integer dimension) {
-        super(dimension);
+public class TestMatrix {
+
+    @Test
+    public void testMatrixCreation() {
+
+        DemoMatrix demoMatrix = new DemoMatrix(3);
+
+        assertThat(demoMatrix.getRows(), is(3));
+        assertThat(demoMatrix.getColumns(), is(3));
+
     }
 
-    public TestMatrix(Integer rows, Integer columns) {
-        super(rows, columns);
-    }
-
-    @Override
-    protected Integer[][] createMatrix(Integer rows, Integer columns) {
-        return new Integer[rows][columns];
-    }
 
 
 }
