@@ -4,7 +4,9 @@ import com.unidev.lib.matrix.model.Coordinate;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.core.IsNot.not;
 
 public class TestMatrix {
 
@@ -33,6 +35,21 @@ public class TestMatrix {
         assertThat(value, is(666));
     }
 
+    @Test
+    public void testMatrixComparasion() {
+        DemoMatrix matrix = new DemoMatrix(3);
+        DemoMatrix equalMatrix = new DemoMatrix(3);
+        DemoMatrix differentSizeMatrix = new DemoMatrix(5,2);
+
+        assertThat(matrix, equalTo(equalMatrix));
+        assertThat(matrix, not(equalTo(differentSizeMatrix)));
+
+        DemoMatrix equalSizeDifferentElement = new DemoMatrix(3);
+        equalSizeDifferentElement.set(Coordinate.newInstance().withRow(1).withColumn(2), 120);
+
+        assertThat(matrix, not(equalTo(equalSizeDifferentElement)));
+
+    }
 
 
 }

@@ -60,14 +60,11 @@ public abstract class Matrix<T> implements Iterable<T> {
             return false;
         }
 
-        for(int row = 0;row<=getRows();row++) {
-            for(int column = 0;column<=getColumns();column++) {
-                if (!matrix[row][column].equals(otherMatrix.matrix[row][column])) {
-                    return false;
-                }
+        for(int row = 0;row<getRows();row++) {
+            if (!Arrays.equals(matrix[row], otherMatrix.matrix[row])) {
+                return false;
             }
         }
-
         return true;
     }
 
