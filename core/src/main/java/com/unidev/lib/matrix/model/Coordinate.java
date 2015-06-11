@@ -13,7 +13,7 @@ public class Coordinate {
      * New coordinate instance
      * @return new coordinate instance
      */
-    public Coordinate newInstance() {
+    public static Coordinate newInstance() {
         return new Coordinate();
     }
 
