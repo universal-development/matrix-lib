@@ -17,6 +17,14 @@ public class Coordinate {
         return new Coordinate();
     }
 
+    /**
+     * New coordinate instance
+     * @return new coordinate instance
+     */
+    public static Coordinate coordinate() {
+        return new Coordinate();
+    }
+
     public Coordinate() {
         row = column = null;
     }
