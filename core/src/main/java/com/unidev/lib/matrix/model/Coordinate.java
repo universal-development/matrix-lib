@@ -21,6 +21,11 @@ public class Coordinate {
         row = column = null;
     }
 
+    public Coordinate(Integer row, Integer column) {
+        this.row = row;
+        this.column = column;
+    }
+
     public Coordinate withRow(Integer row) {
         setRow(row);
         return this;
