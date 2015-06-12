@@ -1,6 +1,12 @@
 package com.unidev.lib.matrix.utils;
 
+import com.unidev.lib.matrix.model.Coordinate;
 import com.unidev.lib.matrix.model.Matrix;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Utils code to work with matrix instances
@@ -8,7 +14,21 @@ import com.unidev.lib.matrix.model.Matrix;
 public class MatrixUtils {
 
     public static <T> void shuffle(Matrix<T> matrix) {
-        //TODO: implement matrix shuffle
+        List<T> elements = new ArrayList<T>();
+        Iterator<T> iterator = matrix.iterator();
+        while(iterator.hasNext()) {
+            elements.add(iterator.next());
+        }
+        Collections.shuffle(elements);
+
+        for(Integer row = 0;row < matrix.getRows();row++) {
+            for(Integer col = 0;col < matrix.getColumns();col++) {
+                T element = elements.get(0);
+                elements.remove((int)0);
+                matrix.set(Coordinate.coordinate().withRow(row).withColumn(col), element);
+            }
+        }
+
     }
 
 }
