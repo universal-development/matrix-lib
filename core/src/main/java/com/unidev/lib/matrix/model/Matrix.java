@@ -8,7 +8,7 @@ import java.util.Iterator;
 /**
  * Matrix representation
  */
-public abstract class Matrix<T> implements Iterable<T> {
+public abstract class Matrix<T> implements Iterable<T>, Cloneable{
 
     protected T matrix[][];
     protected Integer rows;
@@ -40,6 +40,16 @@ public abstract class Matrix<T> implements Iterable<T> {
         this.rows = rows;
         this.columns = columns;
         this.matrix = createMatrix(rows, columns);
+    }
+
+    /**
+     * Constructor with Matrix argument
+     * @param matrix
+     */
+    public Matrix(Matrix<T> matrix) {
+        this.rows = matrix.rows;
+        this.rows = matrix.rows;
+        this.columns = matrix.columns;
     }
 
     /**
@@ -135,6 +145,10 @@ public abstract class Matrix<T> implements Iterable<T> {
                 '}';
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     public Integer getRows() {
         return rows;

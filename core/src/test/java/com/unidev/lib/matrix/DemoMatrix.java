@@ -16,6 +16,10 @@ public class DemoMatrix extends Matrix<Integer> {
         super(rows, columns);
     }
 
+    public DemoMatrix(Matrix<Integer> matrix) {
+        super(matrix);
+    }
+
     @Override
     protected Integer[][] createMatrix(Integer rows, Integer columns) {
         return new Integer[rows][columns];
