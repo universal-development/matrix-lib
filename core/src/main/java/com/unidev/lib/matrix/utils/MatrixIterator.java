@@ -21,11 +21,26 @@ public class MatrixIterator<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        return false;
+        if ( (position.getRow() == matrix.getRows()-1)
+            && (position.getColumn() == matrix.getColumns() -1 ) ) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public T next() {
-        return null;
+        if ( (position.getRow() == matrix.getRows()-1)
+                && (position.getColumn() == matrix.getColumns() -1 ) ) {
+            throw new IndexOutOfBoundsException(position + " is outside of matrix range");
+        }
+        T element = matrix.get(position);
+
+        position.withColumn(position.getColumn()+1);
+
+        if ( (position.getRow() == matrix.getRows())) {
+            position.withColumn(0).withRow(position.getRow()+1);
+        }
+        return element;
     }
 }
