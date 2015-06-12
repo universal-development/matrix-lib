@@ -21,8 +21,8 @@ public class MatrixIterator<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        if ( (position.getRow() == matrix.getRows()-1)
-            && (position.getColumn() == matrix.getColumns() -1 ) ) {
+        if ( (position.getRow().equals(matrix.getRows()))
+            && (position.getColumn().equals(matrix.getColumns())) ) {
             return false;
         }
         return true;
@@ -30,17 +30,25 @@ public class MatrixIterator<T> implements Iterator<T> {
 
     @Override
     public T next() {
-        if ( (position.getRow() == matrix.getRows()-1)
-                && (position.getColumn() == matrix.getColumns() -1 ) ) {
+        if ( (position.getRow().equals(matrix.getRows()))
+                && (position.getColumn().equals(matrix.getColumns())) ) {
             throw new IndexOutOfBoundsException(position + " is outside of matrix range");
         }
         T element = matrix.get(position);
 
         position.withColumn(position.getColumn()+1);
 
-        if ( (position.getRow() == matrix.getRows())) {
+        if ( (position.getColumn().equals(matrix.getColumns()))) {
             position.withColumn(0).withRow(position.getRow()+1);
         }
         return element;
+    }
+
+    @Override
+    public String toString() {
+        return "MatrixIterator{" +
+                "position=" + position +
+                ", matrix=" + matrix +
+                '}';
     }
 }
