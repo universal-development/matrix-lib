@@ -21,10 +21,10 @@ public class MatrixUtils {
         }
         Collections.shuffle(elements);
 
+        int collectonIndex = 0;
         for(Integer row = 0;row < matrix.getRows();row++) {
             for(Integer col = 0;col < matrix.getColumns();col++) {
-                T element = elements.get(0);
-                elements.remove((int)0);
+                T element = elements.get(collectonIndex++);
                 matrix.set(Coordinate.coordinate().withRow(row).withColumn(col), element);
             }
         }
