@@ -1,6 +1,9 @@
 package com.unidev.lib.matrix;
 
+import com.unidev.lib.matrix.utils.MatrixUtils;
 import org.junit.Test;
+
+import java.util.Random;
 
 import static com.unidev.lib.matrix.model.Coordinate.coordinate;
 import static com.unidev.lib.matrix.model.Coordinate.newInstance;
@@ -65,6 +68,25 @@ public class TestMatrix {
 
         assertThat(dataMatrix, equalTo(nullMatrix));
     }
+
+    @Test
+    public void testMatrixShuffle() {
+        DemoMatrix matrix = new DemoMatrix(3);
+        Random random = new Random();
+
+        for(Integer row  = 0;row < 3;row++) {
+            for(Integer column  = 0;column < 3;column++) {
+                matrix.set(coordinate().withRow(row).withColumn(column), random.nextInt());
+            }
+        }
+        DemoMatrix copyMatrix = new DemoMatrix(matrix);
+        assertThat(matrix.equals(copyMatrix), is(true));
+
+        MatrixUtils.shuffle(copyMatrix);
+        assertThat(matrix.equals(copyMatrix), is(false));
+
+    }
+
 
 
 }
