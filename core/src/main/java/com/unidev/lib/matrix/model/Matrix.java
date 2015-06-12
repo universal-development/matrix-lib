@@ -48,8 +48,16 @@ public abstract class Matrix<T> implements Iterable<T>, Cloneable{
      */
     public Matrix(Matrix<T> matrix) {
         this.rows = matrix.rows;
-        this.rows = matrix.rows;
         this.columns = matrix.columns;
+        this.matrix = createMatrix(rows, columns);
+
+        //copy stuff from one matrix to another...
+        for(Integer row = 0;row<rows;row++) {
+            for(Integer col = 0;col < columns;col++) {
+                this.matrix[row][col] = matrix.matrix[row][col];
+            }
+        }
+
     }
 
     /**
