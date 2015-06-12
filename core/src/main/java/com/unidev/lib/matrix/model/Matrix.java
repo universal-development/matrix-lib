@@ -59,7 +59,7 @@ public abstract class Matrix<T> implements Iterable<T> {
         if (getColumns() != otherMatrix.getColumns()) {
             return false;
         }
-
+        //TODO: deep equals maybe ?
         for(int row = 0;row<getRows();row++) {
             if (!Arrays.equals(matrix[row], otherMatrix.matrix[row])) {
                 return false;
