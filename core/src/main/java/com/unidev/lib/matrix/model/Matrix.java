@@ -147,7 +147,6 @@ public abstract class Matrix<T> implements Iterable<T>, Cloneable{
     @Override
     public String toString() {
         return "Matrix{" +
-                "matrix=" + Arrays.toString(matrix) +
                 ", rows=" + rows +
                 ", columns=" + columns +
                 '}';
