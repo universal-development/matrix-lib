@@ -1,5 +1,6 @@
 package com.unidev.lib.matrix;
 
+import com.unidev.lib.matrix.model.Coordinate;
 import com.unidev.lib.matrix.utils.MatrixUtils;
 import org.junit.Test;
 
@@ -14,7 +15,7 @@ import static org.hamcrest.core.IsNot.not;
 public class TestMatrix {
 
     @Test
-    public void testMatrixCreation() {
+    public void testMatrixCreation() throws CloneNotSupportedException {
 
         DemoMatrix demoMatrix = new DemoMatrix(3);
 
@@ -26,6 +27,11 @@ public class TestMatrix {
         assertThat(demoMatrix.getRows(), is(4));
         assertThat(demoMatrix.getColumns(), is(5));
 
+        DemoMatrix clonedMatrix = (DemoMatrix) demoMatrix.clone();
+        assertThat(clonedMatrix, is(equalTo(demoMatrix)));
+
+        DemoMatrix copyConstructorMatrix = new DemoMatrix(demoMatrix);
+        assertThat(copyConstructorMatrix, is(equalTo(demoMatrix)));
     }
 
     @Test
@@ -36,6 +42,15 @@ public class TestMatrix {
 
         Integer value = demoMatrix.get(newInstance().withRow(0).withColumn(1));
         assertThat(value, is(666));
+
+        Coordinate coordinate = demoMatrix.positionOf(666);
+        assertThat(coordinate, is(not(nullValue())));
+
+        assertThat(coordinate.getRow(), is(0));
+        assertThat(coordinate.getColumn(), is(1));
+
+        Coordinate inexistingCoordinate = demoMatrix.positionOf(123);
+        assertThat(inexistingCoordinate, is(nullValue()));
     }
 
     @Test
