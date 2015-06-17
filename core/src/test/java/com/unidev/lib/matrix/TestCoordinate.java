@@ -5,6 +5,8 @@ import com.unidev.lib.matrix.model.Coordinate;
 import org.junit.Test;
 
 
+import java.util.LinkedHashSet;
+
 import static com.unidev.lib.matrix.model.Coordinate.coordinate;
 import static com.unidev.lib.matrix.model.Coordinate.newInstance;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -35,6 +37,18 @@ public class TestCoordinate {
 
         assertThat(otherCoordinate, is(not(equalTo(coordinate))));
 
+    }
+
+    @Test
+    public void testHashLookup() {
+        Coordinate coordinate = coordinate().withColumn(6).withRow(6);
+        Coordinate otherCoordinate = coordinate().withColumn(1).withRow(4);
+
+        LinkedHashSet<Coordinate> coordinates = new LinkedHashSet<Coordinate>();
+        coordinates.add(coordinate);
+
+        assertThat(coordinates, contains(coordinate));
+        assertThat(coordinates, is(not(contains(otherCoordinate))));
     }
 
 }
