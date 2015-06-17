@@ -18,14 +18,17 @@ public class MatrixIterator<T> implements Iterator<T> {
         this.matrix = matrix;
     }
 
+    public void reset() {
+        this.position = new Coordinate(0, 0);
+    }
 
     @Override
     public boolean hasNext() {
-        if ( (position.getRow().equals(matrix.getRows()))
-            && (position.getColumn().equals(matrix.getColumns())) ) {
-            return false;
+        if ( (position.getRow() < matrix.getRows())
+            && (position.getColumn() < matrix.getColumns()) ) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -35,9 +38,7 @@ public class MatrixIterator<T> implements Iterator<T> {
             throw new IndexOutOfBoundsException(position + " is outside of matrix range");
         }
         T element = matrix.get(position);
-
         position.withColumn(position.getColumn()+1);
-
         if ( (position.getColumn().equals(matrix.getColumns()))) {
             position.withColumn(0).withRow(position.getRow()+1);
         }
