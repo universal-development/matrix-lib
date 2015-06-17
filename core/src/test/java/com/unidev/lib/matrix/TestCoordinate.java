@@ -51,4 +51,14 @@ public class TestCoordinate {
         assertThat(coordinates, is(not(contains(otherCoordinate))));
     }
 
+    @Test
+    public void testCoordinateRepresentation() {
+        Coordinate coordinate = coordinate().withColumn(9).withRow(60);
+
+        assertThat(coordinate.toString(), containsString("9"));
+        assertThat(coordinate.toString(), containsString("60"));
+
+
+    }
+
 }
