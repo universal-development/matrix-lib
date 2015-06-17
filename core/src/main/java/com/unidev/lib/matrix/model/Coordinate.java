@@ -25,6 +25,10 @@ public class Coordinate {
         return new Coordinate();
     }
 
+    public static Coordinate coordinate(Coordinate coordinate) {
+        return new Coordinate(coordinate);
+    }
+
     public Coordinate() {
         row = column = null;
     }
@@ -32,6 +36,11 @@ public class Coordinate {
     public Coordinate(Integer row, Integer column) {
         this.row = row;
         this.column = column;
+    }
+
+    public Coordinate(Coordinate coordinate) {
+        this.row = coordinate.row;
+        this.column = coordinate.column;
     }
 
     public Coordinate withRow(Integer row) {
